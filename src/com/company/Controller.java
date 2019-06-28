@@ -33,52 +33,70 @@ public class Controller {
     public void GenerateCloset() {
         int randomNum = 0;
         String closetName;
-        String answer;
 
         System.out.println("Input three closets name");
         for (int i = 0; i < THREE; i++) {
             randomNum = new Random().nextInt(THREE);
             closetName = new Scanner(System.in).nextLine();
-            if (this.shoesList.get(randomNum).getKindOfShoes().equalsIgnoreCase("flip flop")) {
-                System.out.println("Do you want to bring another kind of shoes?");
-                answer = new Scanner(System.in).nextLine();
-                if (answer.equalsIgnoreCase("yes")) {
-                    this.closetsList.add(new Closet(closetName, this.jacketList.get(randomNum), this.shirtList.get(randomNum), this.pantsList.get(randomNum), this.shoesList.get(randomNum)));
-                    randomNum = new Random().nextInt(THREE);
-                    while (this.shoesList.get(randomNum).getKindOfShoes().equalsIgnoreCase("flip flop")) {
-                        randomNum = new Random().nextInt(THREE);
-                    }
-                    this.closetsList.add(new Closet(closetName, this.jacketList.get(randomNum), this.shirtList.get(randomNum), this.pantsList.get(randomNum), this.shoesList.get(randomNum)));
-                }
-                if (!answer.equalsIgnoreCase("yes")) {
-                    randomNum = new Random().nextInt(THREE);
-                    while (this.shoesList.get(randomNum).getKindOfShoes().equalsIgnoreCase("flip flop")) {
-                        randomNum = new Random().nextInt(THREE);
-                    }
-                    this.closetsList.add(new Closet(closetName, this.jacketList.get(randomNum), this.shirtList.get(randomNum), this.pantsList.get(randomNum), this.shoesList.get(randomNum)));
-                }
 
-            }
             this.closetsList.add(new Closet(closetName, this.jacketList.get(randomNum), this.shirtList.get(randomNum), this.pantsList.get(randomNum), this.shoesList.get(randomNum)));
 //            this.closetsList.add(closetName, this.jacketList.get(i), this.shirtList.get(i), this.pantsList.get(i), this.shoesList.get(i));
         }
 
+        System.out.println("Here are three suggestion for you to pack: ");
         for (int i = 0; i < this.closetsList.size(); i++) {
             System.out.println(this.closetsList.get(i).toString());
         }
     }
 
-    public void DisplayClosetByName() {
+    public void SelectSuitCase() {
         String userInput;
-        System.out.println("Enter the closet you want to look for: ");
+        String userInput2;
+        int randomNum = 0;
+        System.out.println("Enter the closet you want to pack: ");
+        userInput = new Scanner(System.in).nextLine();
+        for (int i = 0; i < this.closetsList.size(); i++) {
+            if (this.closetsList.get(i).getName().equalsIgnoreCase(userInput)) {
+                if (this.closetsList.get(i).getShoes().getKindOfShoes().equalsIgnoreCase("flip flop")) {
+                    System.out.println("Do you want to add other kind of shoes?");
+                    userInput2 = new Scanner(System.in).nextLine();
+                    if (userInput2.equalsIgnoreCase("yes")) {
+                        randomNum = new Random().nextInt(THREE);
+                        while (this.shoesList.get(randomNum).getKindOfShoes().equalsIgnoreCase("flip flop")) {
+                            randomNum = new Random().nextInt(THREE);
+                        }
+                        this.closetsList.add(new Closet(this.closetsList.get(i).getName(), this.jacketList.get(randomNum), this.shirtList.get(randomNum), this.pantsList.get(randomNum), this.shoesList.get(randomNum)));
+                    }
+                    if (!userInput2.equalsIgnoreCase("yes")){
+                        System.out.println("Program End");
+                    }
+
+                }
+            }
+        }
+    }
+
+    public void DisplaySuitCaseByName() {
+        String userInput;
+        System.out.println("Enter the suitcase you want to look for: ");
         userInput = new Scanner(System.in).nextLine();
         for (int i = 0; i < this.closetsList.size(); i++) {
             if (this.closetsList.get(i).getName().equalsIgnoreCase(userInput)) {
                 System.out.println(this.closetsList.get(i).toString());
             }
         }
-
     }
+
+//    public void DisplayShoesByName(){
+//        String userInput;
+//        System.out.println("Enter the suitcase you want to look for: ");
+//        userInput = new Scanner(System.in).nextLine();
+//        for (int i = 0; i < this.closetsList.size(); i++) {
+//            if (this.closetsList.get(i).getName().equalsIgnoreCase(userInput)) {
+//                System.out.println(this.closetsList.get(i).toString());
+//            }
+//        }
+//    }
 
 
 //    private List<Jacket> AddingJackets() {

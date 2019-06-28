@@ -6,6 +6,7 @@ public class Main {
         // write your code here
         Controller controller = new Controller();
         controller.GenerateCloset();
-        controller.DisplayClosetByName();
+        controller.SelectSuitCase();
+        controller.DisplaySuitCaseByName();
     }
 }
