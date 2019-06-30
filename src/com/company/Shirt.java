@@ -3,27 +3,23 @@ package com.company;
 import java.util.Objects;
 
 public class Shirt {
-    String material;
-    String color;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Shirt)) return false;
-        Shirt shirt = (Shirt) o;
-        return Objects.equals(getMaterial(), shirt.getMaterial()) &&
-                Objects.equals(getColor(), shirt.getColor());
-    }
+    private String id;
+    private String material;
+    private String color;
 
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(getMaterial(), getColor());
-    }
-
-    public Shirt(String material, String color) {
+     public Shirt(String id, String material, String color) {
+        this.id = id;
         this.material = material;
         this.color = color;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getMaterial() {
@@ -44,9 +40,8 @@ public class Shirt {
 
     @Override
     public String toString() {
-        return "Shirt{" +
-                "material='" + material + '\'' +
-                ", color='" + color + '\'' +
-                '}';
+        String listString;
+        listString = "Shirt ID: " + this.id + " made with " + this.material + " with the color of " + this.color + "\n";
+        return listString;
     }
 }

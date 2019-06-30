@@ -3,10 +3,12 @@ package com.company;
 import java.util.Objects;
 
 public class Jacket {
-    String material;
-    String color;
+    private String id;
+    private String material;
+    private String color;
 
-    public Jacket(String material, String color) {
+    public Jacket(String id, String material, String color) {
+        this.id = id;
         this.material = material;
         this.color = color;
     }
@@ -27,26 +29,18 @@ public class Jacket {
         this.color = color;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Jacket)) return false;
-        Jacket jacket = (Jacket) o;
-        return Objects.equals(getMaterial(), jacket.getMaterial()) &&
-                Objects.equals(getColor(), jacket.getColor());
+    public String getId() {
+        return id;
     }
 
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(getMaterial(), getColor());
+    public void setId(String id) {
+        this.id = id;
     }
 
-    @Override
+     @Override
     public String toString() {
-        return "Jacket{" +
-                "material='" + material + '\'' +
-                ", color='" + color + '\'' +
-                '}';
+        String listString;
+        listString = "Jacket ID: " + this.id + " made with " + this.material + " with the color of " + this.color + "\n";
+        return listString;
     }
 }

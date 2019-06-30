@@ -6,14 +6,6 @@ public class Shoes {
     String kindOfShoes;
     String material;
     String color;
-// shoes1(flipflop, cotton, red)
-    //shoes2(flipflop, cotton, red)
-    //shoes1.equals(shoes2) true
-    //without the equals and hashcode false
-//    public Shoes(String material, String color) {
-//        this.material = material;
-//        this.color = color;
-//    }
 
     public Shoes(String kindOfShoes, String material, String color) {
         this.kindOfShoes = kindOfShoes;
@@ -22,28 +14,10 @@ public class Shoes {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Shoes)) return false;
-        Shoes shoes = (Shoes) o;
-        return Objects.equals(getKindOfShoes(), shoes.getKindOfShoes()) &&
-                Objects.equals(getMaterial(), shoes.getMaterial()) &&
-                Objects.equals(getColor(), shoes.getColor());
-    }
-
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(getKindOfShoes(), getMaterial(), getColor());
-    }
-
-    @Override
     public String toString() {
-        return "Shoes{" +
-                "kindOfShoes='" + kindOfShoes + '\'' +
-                ", material='" + material + '\'' +
-                ", color='" + color + '\'' +
-                '}';
+        String listString;
+        listString = "Kind of shoes: " + this.kindOfShoes + " made with " + this.material + " with the color of " + this.color + "\n";
+        return listString;
     }
 
     public String getKindOfShoes() {
